@@ -1,0 +1,714 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  003e728 Add config for Travis CI
+  0139e45 Add compressed size to benchmark results
+  019b658 Add retained size to compressor
+  01f0a37 Even if Unsafe exists, it might not have all the methods we need.. test it out before we finish loading the class.
+  0236ff0 Convert to Java 22 APIs
+  027ce01 Update to slice 0.36
+  02f4510 Update file name case
+  03bccdb Add method to obtain max compressed length
+  0408447 Add build status badge
+  0660d4c Enable license checker
+  06fd0b0 Snappy Hadoop codec
+  08a9a1f Handle zero byte read in BZip2CompressionInputStream
+  0a3372f Inline BZ2 internalReset
+  0ab1701 Remove Snappy BufferRecycler
+  0ad0dd5 Add native libraries
+  0b1a710 Remove old findbugs configuration
+  0b2086e [maven-release-plugin] prepare for next development iteration
+  0b22290 Bump com.github.luben:zstd-jni from 1.5.6-3 to 1.5.6-4
+  0d8417d [maven-release-plugin] prepare release 0.11
+  0ee4baa Align Snappy code with other compressors
+  0f6aeb0 Move lz4 tests to lz4 package
+  0f8b2a5 Add JdkDeflateCodec
+  101a614 Verify magic for all frames
+  10ce7bc Support latest version of LZO
+  10dcb8a Ignore end calls for Hadoop compressors and decompressors
+  1237db7 Bump io.airlift:airbase from 153 to 154
+  127b7f3 Prevent JVM crash when buffer too small
+  1357703 Fix checksum computation for concatenated frames
+  14de987 Added a `public byte[] compress( byte[] data)` method.
+  158b727 Add requirements to readme
+  15a2f99 Change compression level for JNI zstd
+  15c0591 Upgrade to Presto Hadoop 0.3
+  15e68df Fix out of bounds read due to negative length
+  1619228 Add compression benchmark
+  16b39bb Add frame compression for zstd
+  19976e2 [maven-release-plugin] prepare for next development iteration
+  19d9436 Fix ASL2 license header text
+  19e7a1b Initialize LzoRawCompressor using Lz4RawCompressor
+  1a0aaf5 [maven-release-plugin] prepare release 0.9
+  1a74319 Update Snappy compressor based on tricks from LZ4
+  1b1ca82 Benchmark without crc verification for fair comparison
+  1b9cfd5 Add import statics to simplify code
+  1c427dc Remove iq80 snappy benchmarks and tests
+  1cbfaaf Bump io.airlift:airbase from 163 to 166
+  1dedc31 Rename BitStream to BitInputStream
+  1e364f7 Fix failure when data compressing incompressible data
+  1e3cf8c Add lz4 compression benchmarks
+  1ec9d30 Add BZip2Codec
+  1eed528 Add system properties to README
+  1f35366 Parameterize benchmarks
+  1fc02f5 Implement decompress ByteBuffer support
+  2055f47 Disable pooling for Hadoop compressor and decompressor
+  20a1750 Fix crash in Snappy and LZO match copy loop
+  20d3ac0 Added streaming mode to SnappyBench
+  21177c0 Updated pom for release
+  2159205 Optimize copyMatchTail performance
+  21ca48b Update unit test to use assertThatThrownBy
+  21eeb00 Bump org.xerial.snappy:snappy-java from 1.1.10.5 to 1.1.10.6
+  2313ba6 Move CorruptionException to snappy package
+  2324c71 Test on JDK 24
+  23d97d0 Upgrade to Airbase 49
+  24b4f18 Update compression libraries to latest versions
+  24c0147 Clean up CRC
+  2518ced Remove CorruptionException
+  25451df Bump com.github.luben:zstd-jni from 1.5.6-4 to 1.5.6-6
+  25b345c Simplify SnappyDecompressor using Lz4 tricks
+  265e5ca [maven-release-plugin] prepare release 0.13
+  26d3174 Add LZ4 Hadoop codec
+  2813575 Add factory to create a (de)compressor based on native availability
+  2880e92 Move snappy code to snappy package
+  28a9843 Add users section
+  28cf770 Use airbase as base pom
+  29a9c50 [maven-release-plugin] prepare release 3.2
+  2a49ba4 Fix BZ2 read at end of block
+  2b4721d [maven-release-plugin] prepare for next development iteration
+  2b94e0b Convert Snappy to Compressor interface
+  2c1391a [maven-release-plugin] prepare for next development iteration
+  2c34eab Introduce constants for well-known values
+  2c5a5d3 Convert BZip2Constants to static class
+  2cea90a Verify length is positive
+  2e6b3e1 Simplify lzo compressor code before real implementation
+  2e92da7 Fix 24 bit reads
+  2faddfb Bump io.airlift:airbase from 184 to 197
+  3210eb1 [maven-release-plugin] prepare for next development iteration
+  32a1f53 Emit clearer error message for zstd 0.7 format
+  33b15f6 Expose Zstd compression level
+  343ec0a Use logical OR in expression
+  34e20e8 Add streaming XxHash64
+  35a5228 Support unknown input size in ZSTD CompressionParameters
+  36787af Add full testing byte-at-a-time
+  36b5e2d Remove unused BZ2 method
+  37455ce Bump actions/setup-java from 3 to 4
+  377d778 Move Iq80 Snappy dependency to test scope
+  38bb31d Fix invalid output buffer length check in LZ4 compressor
+  38dc124 [maven-release-plugin] prepare for next development iteration
+  3976e22 Avoid extra copies in streams
+  397e4bc Upgrade to Airbase 153
+  3991032 Add lz4 compressor
+  3b4a4b1 Move to v2 package
+  3bc16a5 Removed accidental double memory copy
+  3de6e55 Remove duplicate headers
+  3debe2d Fix potential read out of bounds for corrupted input
+  41090e5 Bump io.airlift:airbase from 166 to 168
+  41d69c5 Upgrade to JMH 1.9.3 and Airbase 41
+  422426c Test ZstdDecompressor.getDecompressedSize
+  424e788 Remove legacy snappy decompression tests
+  425f304 Simplify BZ2 stream initialization
+  42a6526 Bump io.airlift:airbase from 197 to 200
+  42b5c89 Fix testing HadoopCodecCompressor.maxCompressedLength
+  43bf487 [maven-release-plugin] prepare release 0.5
+  43da44b [maven-release-plugin] prepare for next development iteration
+  444a22a Update benchmark results against Snappy 1.0.5
+  45d3ffb Always lazy initialize CBZip2InputStream
+  46735a5 Fix JDK bug for concatenated GZIP streams
+  4699c9b [maven-release-plugin] prepare release 0.7
+  46d5282 Improve LZO & LZ4 compression performance for small inputs
+  46f03ff Verify ZstdCodec using ZstdJNI instead of Hadoop code
+  473dafa Migrate snappy compressor tests to new framework
+  47fe762 Added fast decompress path for uncompressable data like JPG files
+  482215e [maven-release-plugin] prepare for next development iteration
+  486e5e3 [maven-release-plugin] prepare for next development iteration
+  489500b Update to airbase 83
+  48b125d Update to airbase 66
+  48ffe22 Bump actions/checkout from 1 to 4
+  4947359 [maven-release-plugin] prepare release 0.18
+  495bae8 Update zstd-jni to latest versions
+  498ea00 Run CI with Java 16
+  4afa36f Upgrade LZ4 reference implementation version
+  4b18723 Add Hadoop LZOP
+  4c22b8a Simplify BZ2 stream management
+  4f384af Replace test usages of javax.inject annotations with Guice
+  4f7ed81 Add tag to scm
+  4fe1bbc Run CI with Java 15 and 16
+  5071010 [maven-release-plugin] prepare for next development iteration
+  50a6b12 Add native libraries for macOS aarch64
+  52288b2 Separate benchmark verify from prepare
+  522f90d Change version to 2.0-SNAPSHOT
+  52b4169 [maven-release-plugin] prepare release 0.12
+  52dac80 Make compress(byte[]) static
+  53dc989 Add test with only ASCII and uniform distribution
+  53e11f3 Add simple test cases to AbstractTestCompression
+  53f93eb Add HadoopCodecCompressor
+  54df181 Rename size to capacity
+  558c3b4 [maven-release-plugin] prepare release 0.19
+  55a75c5 Add zip to compression benchmark
+  55b8f01 Fix maxOutputLength in test
+  560bd2c Remove is_error invokation on function return with valid negative values
+  582be15 [maven-release-plugin] prepare release 0.8
+  5a2464a Reset decompressor state between frames
+  5a85f58 Remove some SuppressWarnings
+  5b6ad4d Add constants for numeric literals
+  5c0a8d5 Switch to x-snappy-framed streaming format
+  5c0e302 Bump io.airlift:airbase from 169 to 184
+  5c7f557 Fix IntelliJ warnings
+  5cd70a3 Throw explicit exception when input is corrupted CorruptionException is a runtime exception CorruptionException is wrapped in IOException in stream code
+  5e353d0 Properly target Java 8
+  5e774df [maven-release-plugin] prepare for next development iteration
+  5fbbabf Add code style checks
+  602f4d7 Make SnappyOutputStream close idempotent
+  60c9953 Added SnappyOutputStream.newChecksumFreeBenchmarkOutputStream()
+  6179293 Compute literal end just once
+  618a2f7 Increase JVM size for tests to 2G
+  6226ce4 Use LZO short copy command when possible
+  6236e08 Align Lz4 Hadoop codec with other codecs
+  6273f52 Add missing bounds checks
+  62f588e Use control Compressor and Decompressor in tests
+  63319e2 [maven-release-plugin] prepare for next development iteration
+  64328ce Remove Hadoop native zlib requirement
+  65681d4 Update to slice 0.32
+  66a3c1e [maven-release-plugin] prepare for next development iteration
+  6705682 Inline BZ2 writeStreamHeader
+  687f957 Remove deprecated Throwables usages
+  6b08a81 Properly handle closed streams
+  6b23cc1 Rename old snappy tests to legacy
+  6b5cbba [maven-release-plugin] prepare for next development iteration
+  6c2c418 Alwasy verify Snappy trailer is a positive number
+  6c9758e Use new data sets loader in TestSnappyStream
+  6d5bb2e [maven-release-plugin] prepare release 0.23
+  6e3b0fd Add generic hadoop codec adapter
+  6e8cd9c Organize BZip2CompressionOutputStream methods
+  6eb421b Add Deflate compressor and decompressor
+  6f3314b Update GHA action versions
+  6f8dbb9 Update Travis config
+  715b262 Rename buildRleTable to initializeRleTable
+  717e31f [maven-release-plugin] prepare for next development iteration
+  71aeeb4 Enable parallel tests
+  7262a6c Upgrade test dependency versions
+  7428946 Cleanup formatting for empty methods
+  75d9dd9 Add Lz4Codec compressor
+  7606be6 [maven-release-plugin] prepare for next development iteration
+  7711a87 [maven-release-plugin] prepare release 3.1
+  7747801 Rename Java zip testing implementations
+  774df93 Update native zstd version
+  77667d1 Optimize match length count function
+  77f7cb5 Bump com.github.luben:zstd-jni from 1.5.5-11 to 1.5.6-3
+  7849abd Add Decompressor interface implementation for snappy
+  78a6dc0 Update reference to Presto
+  7926547 Add test for 24 bit writes
+  796cca0 Implement decompress ByteBuffer support
+  799de47 Document how lz4 & lzo hash is computed
+  7a50089 Rewrote benchmark
+  7a68919 make jar executable
+  7b91118 Correct lzo coded file extension
+  7c2f19e [maven-release-plugin] prepare release 0.14
+  7dcc57e Remove support for ByteBuffer
+  7dd3159 Uncompress streams instead of blocks in tests
+  7e230d9 [maven-release-plugin] prepare release 0.10
+  812770c Upgrade to Java 22
+  818baa5 Improve documentation
+  82828ce Fail if the JVM is not compatible with the copressor
+  83017a3 Update LzoCodec and Lz4Codec to support multiple chunks per block
+  833cf0f [maven-release-plugin] prepare release 0.15
+  83508d5 Add window size and block size to CompressionParameters
+  83dced4 Add Huffman and RLE encoding for zstd literals
+  85b2491 [maven-release-plugin] prepare release 0.20
+  8788987 [maven-release-plugin] prepare release 0.22
+  8876f18 Rename constants
+  895f2d2 Remove irrelevant checkstyle exclusion
+  89d6bef move to io.airlift (step 2)
+  8a0851c Add Java to Lz4, Snappy, and Zstd compressor and decompressor names
+  8a634da Add multiple test corpuses for unit testing and benchmarks
+  8ab2850 fix bug in input stream single byte read methods
+  8b496b5 Cleanup BZip2CompressionOutputStream
+  8b8b23e Add lz4 decompressor tests
+  8b9414d [maven-release-plugin] prepare release 0.26
+  8c5dd2d Bump org.xerial.snappy:snappy-java from 1.1.10.6 to 1.1.10.7
+  8cac415 Remove dependency on Slice
+  8cae96c Make Snappy class package-private
+  8d29015 Fix buffer overrun if output array length is not multiple of 4
+  8e4ebda Update readme
+  9027544 Remove unused CBZip2InputStream skipDecompression field
+  9062977 Add JDK gzip codec
+  90ac2c6 Set target JDK to 1.7
+  9171a9c Fix download paths
+  92068c2 Allow overriding benchmark parameters from command line
+  94043a9 Fixed performance improvment calculation bug
+  9589b8a Update to airbase 112
+  959732d Update hadoop-apache dependency
+  95dd17e Remove unnecessary BenchmarkAlgorithm class
+  967dd01 Update to airbase 59
+  975e9e9 Add LZO to StreamCompressBenchmark
+  98b0dd4 Remove unused BZ2 input stream field
+  98f5831 Add mvn wrapper
+  99a9c3c Remove BZ2 unnecessary dependencies on Hadoop code
+  99d6043 Extract zstd constants to separate class
+  99de82a [maven-release-plugin] prepare for next development iteration
+  99e891e Precompute literal end location
+  9a416f3 Lzo compressor based on Lz4 codebase
+  9a47256 Remove unsupported BZ2 SplitCompressionInputStream
+  9b0aa19 Fix off-by-one error when reading FSE table
+  9b92952 Upgrade to latest GitHub actions
+  9bb5efa Merge benchmarks into single runner
+  9c3250f Upgrade to Java 11
+  9cccff3 Add Iq80 Snappy to benchmark
+  9da8556 Configure release plugin
+  9dafb08 Avoid extra copies in round trip stream benchmark
+  9dfbdda Expose LZ4 acceleration factor
+  9fc2697 Bump io.airlift:airbase from 200 to 202
+  a0092af Added file header
+  a022144 [maven-release-plugin] prepare for next development iteration
+  a07ecca Fix checksum computation when output buffer is not filled
+  a10b5f9 Cleanup Travis config
+  a14a4d0 Use counted copy loops
+  a1c9e23 Remove unused loading of ZStandardCodec
+  a236e5b Enable SnappyCodec compression test
+  a27baf1 Fix comment in test
+  a2a2941 Update to opensource hadoop native code
+  a2d06dc Remove Memory abstraction
+  a3ddb15 Simplify BZ2 output stream internal stream handling
+  a73d3e2 Add native Lz4, Snappy, and Zstd
+  a7d9f39 Add iq80 snappy to default benchmark suite
+  a869e97 Rename to v3
+  a87aee2 [maven-release-plugin] prepare release 0.6
+  a8cd355 move to io.airlift (step 1)
+  aaf5fd3 Handle concatenated frames in zstd decompressor
+  abdf124 Warm up stream compression
+  acb00bc [maven-release-plugin] prepare release snappy-0.2
+  ad0d007 [maven-release-plugin] prepare release 0.4
+  ae27838 Update compressor list in README
+  b019abe Remove dependency on sun.ch.DirectBuffer
+  b108bcb Added round trip benchmark
+  b1249e2 Remove unused reader modes from BZ2
+  b19c21e Upgrade to airbase 157
+  b1fe514 Remove use of magic ControlException
+  b206660 Remove dead code
+  b289207 Remove unused variable
+  b2c23f4 Add no-op zstd compressor
+  b3b287e Optimize snappy performance for small input
+  b3c76d2 Remove CLI
+  b4fe1b3 Added logic to only use unsafe when available
+  b5fe52d Allow Hadoop codec to be reset
+  b749925 Update to checkstyle 2.17
+  b781bcc Use Unsafe to obtain location of direct Buffer address field
+  b79b494 [maven-release-plugin] prepare for next development iteration
+  b89db18 Fix out of bounds read/write in Snappy decompressor
+  b8ac5f5 [maven-release-plugin] prepare for next development iteration
+  b8f9e5c [maven-release-plugin] prepare release 3.3
+  b92d398 Compression tests
+  b9d6f9d [maven-release-plugin] prepare release 0.21
+  ba1c681 Add NativeLoader
+  ba221ac Mark skipped tests as such
+  bde29e3 Fixed order of columns in compression output
+  bdf8579 Remove unused CBZip2InputStream constructor
+  befc81b Use Math.clamp to improve code readability
+  bf6c044 [maven-release-plugin] prepare for next development iteration
+  bfae4eb Synchronize on ByteBuffers to prevent GC during use
+  c14b026 Improve ZSTD byte buffer performance
+  c15d6fa Cleanup BZip2 output stream
+  c2df8a4 [maven-release-plugin] prepare for next development iteration
+  c2f851b Cleanup BZip2 constants
+  c40e74c [maven-release-plugin] prepare release snappy-0.1
+  c422c3b [maven-release-plugin] prepare for next development iteration
+  c463f0a Add Github workflow
+  c4fd024 Add LZO decompressor
+  c5e6972 Build and test with Java 17
+  c6104dc Skip running tests on release
+  c7fd16a Add input and output streams
+  c832551 Implement lz4 decompressor
+  ca208a7 Add ZstdInputStream
+  ca561c8 Fix ZstdOutputStream corruption on double close
+  cabfa65 Fix incorrect max compressed size calculation for ZSTD
+  caf9a24 Rename method to decompress
+  cb0eedd Convert tests to Junit 5
+  cb7400c Add HadoopSnappyCodec
+  cce0d58 [maven-release-plugin] prepare for next development iteration
+  ccfdc17 Allow overriding benchmark selection from command line
+  cd729e3 Remove legacy snappy codec tests
+  cd8f4c3 Requre stream header at begining of input stream
+  cf66151 Fix bounds checks
+  cfac915 Fix round trip for testing JdkInflate / JdkDeflate
+  cfb80d8 Update airbase to 160
+  d01ecb7 Add missing bounds checks
+  d126485 increase travis timeout to 20 minutes
+  d12a524 [maven-release-plugin] prepare release 2.0
+  d2a29b1 Add command line utility
+  d3bd925 Add jmh-based decompression benchmarks
+  d42ddd2 Add release workflow
+  d52af07 Fix ZSTD output stream failure when buffer is flushed early
+  d5dcbb6 Cleanup BZip2CompressionInputStream
+  d8ab307 Re-initialize hash table before compressing ByteBuffer
+  d925f52 Update native libraries
+  d97010b Update to airbase 78
+  da0fb43 Inline BZ2 trySkipMagic
+  da58595 Cleanup README
+  db029f7 [maven-release-plugin] prepare release 0.16
+  db5bb74 Added Crc32c of user input data to header
+  dc2d4f3 Remove legacy snappy benchmarks
+  dc4ece6 [maven-release-plugin] prepare release 0.25
+  dd45602 Compress test data sets on demand
+  de6cfbc Add Hadoop ZstdCodec
+  df34962 [maven-release-plugin] prepare release 0.24
+  dfde2e2 Initial revision
+  e193075 Add MessageSegment support to compressors and decompressors
+  e1fd968 Added license headers
+  e296d30 [maven-release-plugin] prepare for next development iteration
+  e2d2cf7 Move FSE table load outside of decompress function
+  e64f6f7 Add Maven version badge
+  e68ba5b Add utility to initialize Hadoop native libraries
+  e6b0084 Add dependabot
+  e6b9957 [maven-release-plugin] prepare for next development iteration
+  e718f81 Remove Travis CI config
+  e7548196 [maven-release-plugin] prepare release 0.17
+  e7de3bd Added explination of stream format
+  e8c02be Make Util class final
+  e904141 Rename weights -> outputBuffer
+  e9e0de8 Add ZSTD decompressor
+  ea31a52 Bump io.airlift:airbase from 168 to 169
+  ea8ddf9 Load and instantiate test data sets once per VM
+  eb1d8cb Copy Tatu's buffer recycler to speed up small streams
+  ebcdaad [maven-release-plugin] prepare for next development iteration
+  ec0cfdb [maven-release-plugin] prepare release 3.0
+  ec93ba7 Show overall benchmark results
+  ecda4a0 Fixed bug that prevented marking SnappyOutputStream as closed and releasing buffers when close() method was called.
+  eda4424 Bump io.airlift:airbase from 160 to 163
+  ef17aec Minor cleanup of lz4 compressor
+  ef276f5 [maven-release-plugin] prepare release 0.3
+  ef33203 Change project description in pom
+  ef78594 [maven-release-plugin] prepare for next development iteration
+  f002805 Implement resetState in Hadoop CompressionInputStream implementations
+  f093ed0 [maven-release-plugin] prepare for next development iteration
+  f0c822e Rename argument
+  f1f65a8 Fix temp path construction
+  f3d054f fix lzo compressor/decompressor
+  f439216 [maven-release-plugin] prepare for next development iteration
+  f61615f Use new block header format
+  f6b7cd0 Hide classes not part of public interface
+  f9097e9 Organize methods in BZip2CompressionInputStream
+  fa4ec32 User buffer recycler to cache compresion hash
+  fb4b0a5 Rename Snappy streams to SnappyFramed
+  fb92424 Fixed SnappyInputStream.read() method. Implementation of this method was incorrectly returning negative values for bytes in range 128-255.
+  fba650a [maven-release-plugin] prepare for next development iteration
+  fbf7ec2 Add ZstdOutputStream
+  fc32a28 Add basic Compressor/Decompressor interfaces
+  fc51b7c Merge pull request #1 from electrum/master
+  fcac0aa Remove unused BZ2 position advertise state machine
+  fcf7ffa Fix buffer overrun when copying match tail
+  fcfc276 Cleanup BZip2 input stream
+  fd53d20 Fix failure when generating RLE blocks with 2 or 3-byte header
+  fd56173 Tuned decomoression code Split main loop into fast path and slow path which is used when near the end of the input array Inlined copyFromSelf Added unsafe methods to read op and lookup entry in the op table Rewrote readUncompressedLength
+  fdc00b8 Reorganize pom
+  fdc4cc6 Updated benchmark results
+  fe95bd9 Fix bug with literal copy index out of bounds
+  ffa8fc9 Add native zstd to compression benchmark
+  ffad69e Rename parameter to be more descriptive
+2011-09-14 (1 commit(s)):
+2011-09-15 (1 commit(s)):
+2011-09-16 (3 commit(s)):
+2011-09-21 (1 commit(s)):
+2011-09-22 (1 commit(s)):
+2011-09-23 (3 commit(s)):
+2011-09-25 (2 commit(s)):
+2011-09-26 (3 commit(s)):
+2011-09-27 (1 commit(s)):
+2011-09-28 (13 commit(s)):
+2011-09-29 (9 commit(s)):
+2011-12-23 (4 commit(s)):
+2012-03-23 (1 commit(s)):
+2012-05-08 (1 commit(s)):
+2012-06-07 (4 commit(s)):
+2012-06-13 (1 commit(s)):
+2012-07-24 (2 commit(s)):
+2013-09-18 (1 commit(s)):
+2014-01-24 (1 commit(s)):
+2014-01-27 (1 commit(s)):
+2015-07-14 (4 commit(s)):
+2015-07-15 (17 commit(s)):
+2015-07-16 (23 commit(s)):
+2015-07-17 (12 commit(s)):
+2015-07-18 (5 commit(s)):
+2015-07-19 (3 commit(s)):
+2015-07-20 (11 commit(s)):
+2015-07-25 (1 commit(s)):
+2015-08-14 (1 commit(s)):
+2015-10-20 (1 commit(s)):
+2016-02-05 (1 commit(s)):
+2016-03-02 (1 commit(s)):
+2016-03-04 (2 commit(s)):
+2016-03-05 (1 commit(s)):
+2016-03-08 (3 commit(s)):
+2016-03-18 (1 commit(s)):
+2016-04-07 (1 commit(s)):
+2016-06-24 (1 commit(s)):
+2016-11-02 (4 commit(s)):
+2016-11-03 (4 commit(s)):
+2017-02-05 (1 commit(s)):
+2017-03-13 (1 commit(s)):
+2017-03-14 (3 commit(s)):
+2017-03-22 (1 commit(s)):
+2017-04-15 (1 commit(s)):
+2017-04-26 (2 commit(s)):
+2017-04-29 (1 commit(s)):
+2017-05-04 (1 commit(s)):
+2017-05-12 (1 commit(s)):
+2017-05-16 (3 commit(s)):
+2017-06-22 (1 commit(s)):
+2017-06-23 (1 commit(s)):
+2017-07-12 (1 commit(s)):
+2017-07-17 (2 commit(s)):
+2017-07-25 (1 commit(s)):
+2017-08-15 (3 commit(s)):
+2017-09-07 (4 commit(s)):
+2017-12-20 (4 commit(s)):
+2018-01-06 (4 commit(s)):
+2018-01-17 (1 commit(s)):
+2018-01-18 (1 commit(s)):
+2018-04-23 (2 commit(s)):
+2018-04-25 (1 commit(s)):
+2018-04-27 (2 commit(s)):
+2018-05-02 (1 commit(s)):
+2018-05-03 (3 commit(s)):
+2018-05-04 (2 commit(s)):
+2018-08-16 (1 commit(s)):
+2018-08-30 (1 commit(s)):
+2018-09-03 (1 commit(s)):
+2018-09-04 (1 commit(s)):
+2018-09-08 (2 commit(s)):
+2018-09-10 (1 commit(s)):
+2018-09-24 (2 commit(s)):
+2018-10-05 (4 commit(s)):
+2018-10-18 (1 commit(s)):
+2018-10-24 (2 commit(s)):
+2018-11-01 (1 commit(s)):
+2019-01-10 (5 commit(s)):
+2019-01-11 (3 commit(s)):
+2019-06-04 (3 commit(s)):
+2019-06-06 (5 commit(s)):
+2019-06-11 (1 commit(s)):
+2019-07-18 (2 commit(s)):
+2019-10-14 (4 commit(s)):
+2020-01-02 (1 commit(s)):
+2020-02-13 (1 commit(s)):
+2020-05-02 (1 commit(s)):
+2020-06-15 (1 commit(s)):
+2020-08-12 (2 commit(s)):
+2020-12-27 (1 commit(s)):
+2021-01-12 (2 commit(s)):
+2021-01-13 (2 commit(s)):
+2021-03-16 (1 commit(s)):
+2021-06-14 (1 commit(s)):
+2021-06-16 (3 commit(s)):
+2021-06-17 (2 commit(s)):
+2021-06-18 (2 commit(s)):
+2021-08-10 (1 commit(s)):
+2021-08-11 (2 commit(s)):
+2021-08-30 (1 commit(s)):
+2021-08-31 (2 commit(s)):
+2021-09-14 (1 commit(s)):
+2022-04-12 (4 commit(s)):
+2022-04-13 (1 commit(s)):
+2022-07-01 (1 commit(s)):
+2022-07-20 (1 commit(s)):
+2022-08-15 (2 commit(s)):
+2022-08-17 (1 commit(s)):
+2022-08-27 (10 commit(s)):
+2022-08-29 (1 commit(s)):
+2022-11-01 (1 commit(s)):
+2023-02-19 (6 commit(s)):
+2023-02-20 (18 commit(s)):
+2023-02-25 (1 commit(s)):
+2023-03-03 (2 commit(s)):
+2023-03-04 (2 commit(s)):
+2023-03-06 (5 commit(s)):
+2023-07-12 (1 commit(s)):
+2023-07-13 (2 commit(s)):
+2024-01-05 (1 commit(s)):
+2024-02-08 (4 commit(s)):
+2024-02-11 (3 commit(s)):
+2024-03-19 (12 commit(s)):
+2024-04-22 (1 commit(s)):
+2024-04-25 (5 commit(s)):
+2024-05-21 (1 commit(s)):
+2024-06-06 (2 commit(s)):
+2024-06-07 (6 commit(s)):
+2024-06-20 (1 commit(s)):
+2024-06-27 (1 commit(s)):
+2024-06-28 (1 commit(s)):
+2024-07-03 (2 commit(s)):
+2024-07-22 (1 commit(s)):
+2024-08-06 (5 commit(s)):
+2024-08-07 (2 commit(s)):
+2024-08-08 (2 commit(s)):
+2024-08-09 (1 commit(s)):
+2024-08-12 (2 commit(s)):
+2024-08-13 (1 commit(s)):
+2024-08-16 (1 commit(s)):
+2024-08-17 (2 commit(s)):
+2024-08-26 (1 commit(s)):
+2024-08-28 (1 commit(s)):
+2024-09-04 (2 commit(s)):
+2024-09-11 (1 commit(s)):
+2024-09-23 (1 commit(s)):
+2024-09-25 (1 commit(s)):
+2024-10-02 (3 commit(s)):
+2024-11-08 (2 commit(s)):
+2024-11-20 (1 commit(s)):
+2024-11-25 (2 commit(s)):
+2024-12-02 (1 commit(s)):
+2025-04-01 (3 commit(s)):
+2025-06-10 (2 commit(s)):
